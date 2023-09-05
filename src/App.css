@@ -1,5 +1,5 @@
 body {
-  background: #4d4d4d;
+  background:#262626;
 }
 
 .container{
@@ -46,10 +46,7 @@ body {
 .qr-code-img{
   display: block;
   margin: 10px auto;
-  height: 100px;
-  width: 100px;
 }
-
 
 .btn-download > a {
   text-decoration: none;

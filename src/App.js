@@ -4,11 +4,23 @@ import { saveAs } from 'file-saver';
 
 function App() {
   const [qrText, setQrText] = useState('');
+  const [qrUrl, setQrUrl] = useState('');
+  const [showQr, setShowQr] = useState(false);
+
+  useEffect(() =>{
+    if(qrText.length > 0){
+      setShowQr(true);
+      setQrUrl(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText}`)
+    }
+    else{
+      setShowQr(false);
+    }
+  }, [qrText])
 
   const downloadQR = () =>{
-    saveAs(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText}`, 'qr.png')
+    saveAs(qrUrl, 'qr.png')
   }
-  
+
   return (
     <>
       <div className='container'>
@@ -19,9 +31,8 @@ function App() {
           setQrText(e.target.value);
         }}/>
 
-        <div className='imgBox'>
-          <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText}`} 
-          className='qr-code-img' download/>
+        <div className='img-box'>
+          {showQr ? <img src={qrUrl} className='qr-code-img'/> : ''}
         </div>
 
         <button type='button' className='btn-download' onClick={downloadQR}>
