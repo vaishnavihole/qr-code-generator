@@ -50,3 +50,8 @@ body {
   width: 100px;
 }
 
+
+.btn-download > a {
+  text-decoration: none;
+  color: white;
+}

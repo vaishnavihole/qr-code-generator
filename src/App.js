@@ -1,8 +1,14 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import { saveAs } from 'file-saver';
 
 function App() {
   const [qrText, setQrText] = useState('');
+
+  const downloadQR = () =>{
+    saveAs(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText}`, 'qr.png')
+  }
+  
   return (
     <>
       <div className='container'>
@@ -15,10 +21,12 @@ function App() {
 
         <div className='imgBox'>
           <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText}`} 
-          className='qr-code-img' />
+          className='qr-code-img' download/>
         </div>
 
-        <button type='button' className='btn-download'>Download QR</button>
+        <button type='button' className='btn-download' onClick={downloadQR}>
+          Download QR Code
+        </button>
 
       </div>
     </>
