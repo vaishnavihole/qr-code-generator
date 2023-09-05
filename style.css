@@ -21,7 +21,7 @@ body{
 
 .container input{
     width: 100%;
-    height: 50px;
+    height: 40px;
     border: 1px solid #494eea;
     outline: 0;
     padding: 10px;
@@ -42,3 +42,4 @@ body{
     margin: 20px 0;
     font-weight: 500;
 }
+
